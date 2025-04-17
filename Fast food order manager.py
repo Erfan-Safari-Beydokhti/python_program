@@ -27,3 +27,9 @@ def show_basket():
             print(f"{item} *{count} = {price}")
             total+=price
         print(f"total : {total}")
+
+def remove_basket(item):
+    if item in basket:
+        basket[item]-=1
+    if basket[item]==0:
+        basket.pop(item)
