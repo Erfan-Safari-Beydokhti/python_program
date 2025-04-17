@@ -46,7 +46,7 @@ def main ():
             add_item = input("Item you want to add: ").strip().lower()
             add_basket(add_item)
         elif command == "remove":
-            remove_item = input("Item you want to remove: ")
+            remove_item = input("Item you want to remove: ").strip().lower()
             remove_basket(remove_item)
         elif command == "show":
             show_basket()
