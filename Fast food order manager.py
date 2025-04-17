@@ -28,7 +28,7 @@ def main ():
                 price = menu.get(item, 0) * count
                 print(f"{item} *{count} = {price}")
                 total += price
-            print(f"total : {total}")
+            print(f"total : {total:.2f}")
 
     def remove_basket(item):
         if item in basket:
