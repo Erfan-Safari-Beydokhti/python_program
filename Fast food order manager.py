@@ -33,3 +33,22 @@ def remove_basket(item):
         basket[item]-=1
     if basket[item]==0:
         basket.pop(item)
+
+while True:
+    command = input("Choose\n [menu , add , remove , show , quit]: \n").strip().lower()
+    if command=="menu":
+        show_menu()
+    elif command=="add":
+        add_item=input("Item you want to add: ").strip().lower()
+        add_basket(add_item)
+    elif command=="remove":
+        remove_item=input("Item you want to remove: ")
+        remove_basket(remove_item)
+    elif command=="show":
+        show_basket()
+    elif command=="quit":
+        print("Thanks you ! Here is your receipt : ")
+        show_basket()
+        break
+    else:
+        print("invali command")
