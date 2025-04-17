@@ -51,4 +51,4 @@ while True:
         show_basket()
         break
     else:
-        print("invali command")
+        print("invalid command")
