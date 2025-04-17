@@ -35,9 +35,11 @@ def main ():
             basket[item] -= 1
         if basket[item] == 0:
             basket.pop(item)
-
+    def clear_basket():
+        basket.clear()
+        print("Basket cleared.")
     while True:
-        command = input("Choose\n [menu , add , remove , show , quit]: \n").strip().lower()
+        command = input("Choose\n [menu , add , remove , show , clear , quit ]: \n").strip().lower()
         if command == "menu":
             show_menu()
         elif command == "add":
@@ -52,6 +54,8 @@ def main ():
             print("Thanks you ! Here is your receipt : ")
             show_basket()
             break
+        elif command == "clear":
+            clear_basket()
         else:
             print("invali command")
 
