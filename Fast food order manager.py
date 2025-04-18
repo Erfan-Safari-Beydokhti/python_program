@@ -19,6 +19,17 @@ def main ():
     else:
         users={}
 
+    if os.path.exists(history_path):
+        with open(history_file,"r")as f :
+            order_history=json.load(f)
+    else:
+        order_history={}
+    basket={}
+
+
+
+
+
     
     def show_menu():
         for item in menu.keys():
