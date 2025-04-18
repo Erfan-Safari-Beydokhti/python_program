@@ -30,7 +30,7 @@ def main():
 
     def authenticate():
         print("Welcome to Fast food order manager")
-        user_name = input("Enter your name: ").strip()
+        user_name = input("Enter your username: ").strip()
         password = input("Enter your password: ").strip()
 
         if user_name in users:
