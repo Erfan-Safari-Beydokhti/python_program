@@ -78,9 +78,11 @@ def main ():
         elif command == "show":
             show_basket(username)
         elif command == "quit":
-            print("Thanks you ! Here is your receipt : ")
-            show_basket(username)
-            save_basket(username)
+            confirm=input("Are you sure you want to quit? [y/n] ").strip().lower()
+            if confirm == "y":
+                print("Thanks you ! Here is your receipt : ")
+                show_basket(username)
+                save_basket(username)
             break
         elif command == "clear":
             clear_basket(username)
