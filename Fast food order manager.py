@@ -30,7 +30,23 @@ def main ():
 
 
 
-    
+    def authenticate():
+        print("Welcome to Fast food order manager")
+        user_name = input("Enter your name: ").strip()
+        password = input("Enter your password: ").strip()
+
+        if user_name in users:
+            if users[user_name]==password:
+                print("Login successful")
+            else:
+                print("Wrong password")
+                exit()
+        else:
+            print("New user , registering")
+            users[user_name] = password
+            with open(users_file,"w") as f:
+                json.dump(users, f )
+            print("Registered and Loggedin ")
     def show_menu():
         for item in menu.keys():
             print(f"{item}: {menu[item]}")
@@ -42,10 +58,11 @@ def main ():
         else:
             print("your item does not exist")
 
-    def show_basket(username):
-        basket=users[username]
+    def show_basket():
+
         if not basket:
             print("Your basket is empty ")
+            return
         else:
             total = 0
             for item, count in basket.items():
