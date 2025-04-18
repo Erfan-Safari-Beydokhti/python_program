@@ -1,5 +1,6 @@
 from datetime import datetime
-
+import json
+import os
 def main ():
     menu = {
         "pizza": 120,
@@ -9,7 +10,16 @@ def main ():
         "drink": 10
     }
 
-    users={}
+    users_file="users_file.json"
+    history_file="history_file.json"
+
+    if os.path.exists(user_path):
+        with open(users_file,"r") as f:
+            users=json.load(f)
+    else:
+        users={}
+
+    
     def show_menu():
         for item in menu.keys():
             print(f"{item}: {menu[item]}")
