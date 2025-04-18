@@ -62,9 +62,9 @@ def main ():
 
         if not basket:
             print("Your basket is empty ")
-            return
         else:
             total = 0
+            print("Your Basket : ")
             for item, count in basket.items():
                 price = menu.get(item, 0) * count
                 print(f"{item} *{count} = {price}")
@@ -73,20 +73,15 @@ def main ():
     def save_basket(username):
 
         now=datetime.now().strftime("%m/%d/%Y %H:%M:%S")
-        basket=users[username]
-        total=0
-        if not basket:
-            print("Your basket is empty ")
-            return
-        with open("all_users_basket.txt","a") as file:
-            file.write(f"Username: {username}\tTime : {now} \n ")
-            for item,count in basket.items():
-                price = menu[item]*count
-                file.write(f"{item} *{count} = {price}\n")
-                total += price
-            file.write(f"Total : {total:.2f}")
-            file.write("-"*40+"\n")
-        print("Order saved in all_users_basket.txt")
+        order={
+            "date":now,
+            "items":basket,
+            "Total":sum(menu[item] * count for item,count in basket.items())
+        }
+        order_history.setdefault(user_name,[]).append(order)
+        with open(history_file,"w") as f:
+            json.dump(order_history,f,indent=4)
+        print("Order Saved")
     def remove_basket(username,item):
         if item in users[username]:
             users[username][item]-=1
