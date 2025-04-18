@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def main ():
     menu = {
         "pizza": 120,
@@ -6,20 +8,21 @@ def main ():
         "salad": 25,
         "drink": 10
     }
-    basket = {}
 
+    users={}
     def show_menu():
         for item in menu.keys():
             print(f"{item}: {menu[item]}")
 
-    def add_basket(item):
+    def add_basket(username,item):
         if item in menu:
-            basket[item] = basket.get(item, 0) + 1
+            users[username][item]=users[username].get(item,0)+1
             print(f"{item}: added to your basket")
         else:
             print("your item does not exist")
 
-    def show_basket():
+    def show_basket(username):
+        basket=users[username]
         if not basket:
             print("Your basket is empty ")
         else:
@@ -29,33 +32,60 @@ def main ():
                 print(f"{item} *{count} = {price}")
                 total += price
             print(f"total : {total:.2f}")
+    def save_basket(username):
 
-    def remove_basket(item):
-        if item in basket:
-            basket[item] -= 1
-        if basket[item] == 0:
-            basket.pop(item)
-    def clear_basket():
-        basket.clear()
+        now=datetime.now().strftime("%m/%d/%Y %H:%M:%S")
+        basket=users[username]
+        total=0
+        if not basket:
+            print("Your basket is empty ")
+            return
+        with open("all_users_basket.txt","a") as file:
+            file.write(f"Username: {username}\tTime : {now} \n ")
+            for item,count in basket.items():
+                price = menu[item]*count
+                file.write(f"{item} *{count} = {price}\n")
+                total += price
+            file.write(f"Total : {total:.2f}")
+            file.write("-"*40+"\n")
+        print("Order saved in all_users_basket.txt")
+    def remove_basket(username,item):
+        if item in users[username]:
+            users[username][item]-=1
+            if users[username][item] == 0:
+                 users[username].pop(item)
+            print(f"{item}: removed from your basket")
+        else:
+            print("Item not in basket")
+    def clear_basket(username):
+        users[username].clear()
         print("Basket cleared.")
     while True:
-        command = input("Choose\n [menu , add , remove , show , clear , quit ]: \n").strip().lower()
+        print("Welcome to Fast food order manager")
+        username = input("Enter your username: ")
+
+        if username not in users:
+            users[username]={}
+        command = input("Choose\n [menu , add , remove , show , save , clear , quit ]: \n").strip().lower()
         if command == "menu":
             show_menu()
         elif command == "add":
             add_item = input("Item you want to add: ").strip().lower()
-            add_basket(add_item)
+            add_basket(username,add_item)
         elif command == "remove":
             remove_item = input("Item you want to remove: ").strip().lower()
-            remove_basket(remove_item)
+            remove_basket(username,remove_item)
         elif command == "show":
-            show_basket()
+            show_basket(username)
         elif command == "quit":
             print("Thanks you ! Here is your receipt : ")
-            show_basket()
+            show_basket(username)
+            save_basket(username)
             break
         elif command == "clear":
-            clear_basket()
+            clear_basket(username)
+        elif command == "save":
+            save_basket(username)
         else:
             print("invali command")
 
