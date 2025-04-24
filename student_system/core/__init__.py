@@ -24,7 +24,7 @@ def add_student():
         print("خطا")
 def remove_student():
     students=load_students()
-    target_id=input("شماره دانش آموز :")
+    target_id=input("شماره دانش آموز :").strip()
     update=[s for s in students if s["ID"]!=target_id]
     if len(update) != len(students):
         save_students(update)
@@ -33,5 +33,8 @@ def remove_student():
         print("دانش آموز پیدا نشد ")
 def view_students():
     students=load_students()
+    if not students:
+        print("دانش آموزی یافت نشد")
+        return
     for row in students:
         print(f"{row['ID']} : {row['Name']} , {row['Age']} , {row['Grade']}")
