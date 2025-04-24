@@ -18,6 +18,10 @@ def save_students(students):
 def load_students():
     if not os.path.exists(DATA_PATH):
         return []
-    with open(DATA_PATH, mode='r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return list(reader)
+    try:
+        with open(DATA_PATH, mode='r') as csvfile:
+            reader = csv.DictReader(csvfile)
+            return list(reader)
+    except Exception as e:
+        print("خطا هنگام بارگزاری فایل")
+        return []
