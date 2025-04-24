@@ -1,9 +1,7 @@
 import csv
 import os
-from logging import exception
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, '..', 'data', 'students.csv')
+DATA_PATH = './data/students.csv'
 
 def save_students(students):
     try:
@@ -13,8 +11,9 @@ def save_students(students):
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(students)
-    except Exception as e:
-        print("خطا هنگام ذخیره اطلاعات")
+    except Exception:
+        print(" خطا هنگام ذخیره اطلاعات.")
+
 def load_students():
     if not os.path.exists(DATA_PATH):
         return []
@@ -22,6 +21,6 @@ def load_students():
         with open(DATA_PATH, mode='r') as csvfile:
             reader = csv.DictReader(csvfile)
             return list(reader)
-    except Exception as e:
-        print("خطا هنگام بارگزاری فایل")
+    except Exception:
+        print(" خطا هنگام بارگذاری فایل.")
         return []
