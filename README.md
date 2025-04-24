@@ -1,18 +1,16 @@
-🍔 Fast Food CLI Order Manager
+🧾 Invoice & Sales Management System
 
-A simple **Python-based command-line** tool for managing fast food orders.  
-It supports user login/registration, viewing the menu, managing a basket, saving orders, and reviewing order history — all through a simple text-based interface.
-
----
-
- 📦 Features
-
-- ✅ User login and registration (stored in `users_file.json`)
-- 🧾 View menu items and prices
-- 🛒 Add/remove items from your basket
-- 💾 Save your basket as an order with timestamp
-- 🗃️ View order history (stored in `history_file.json`)
-- 🧹 Clear the basket anytime
+A practical Python-based Invoice and Sales Management System designed for small businesses, freelancers, and home-based shops. This project allows you to manage products, customers, generate PDF invoices, and track sales — all through a clean CLI interface.
 
 
+
+📦 Features
+
+✅ Add, edit, delete, and search for products
+👥 Manage customer profiles
+🧾 Generate professional PDF invoices
+📊 View sales reports (top products, total income, etc.)
+💾 Data stored in JSON (or SQLite in extended versions)
+🔐 Optional login system for admins
+📁 Clean modular project structure for scalability
 
