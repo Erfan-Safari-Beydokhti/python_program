@@ -18,3 +18,7 @@ def remove_student():
         print("دانش آموز حذق شد ")
     else:
         print("دانش آموز پیدا نشد ")
+def view_student():
+    students=load_students()
+    for row in students:
+        print(f"{row['ID']} : {row['Name']} , {row['age']} , {row['grade']}")
