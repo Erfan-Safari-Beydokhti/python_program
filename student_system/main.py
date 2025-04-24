@@ -6,7 +6,7 @@ def main ():
         print("2. افزودن دانش آموز ")
         print("3. حذف دانش آموز ")
         print("4. خروج ")
-        choice=input("انتخاب شما: ")
+        choice=input("انتخاب شما: ").strip()
         if choice=="1":
             view_students()
         elif choice=="2":
