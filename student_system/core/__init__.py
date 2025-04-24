@@ -9,3 +9,12 @@ def add_student():
     }
     students.append(new_student)
     save_students(students)
+def remove_student():
+    students=load_students()
+    target_id=input("شماره دانش آموز :")
+    update=[s for s in students if s["ID"]!=target_id]
+    if len(update) != len(students):
+        save_students(update)
+        print("دانش آموز حذق شد ")
+    else:
+        print("دانش آموز پیدا نشد ")
