@@ -2,14 +2,26 @@ from .file_handler import save_students , load_students
 import os
 def add_student():
     students=load_students()
-    new_student={
-        "ID":input("Enter student ID:"),
-        "Name":input("Enter student name:"),
-        "Age":int(input("Enter student age:")),
-        "Grade":input("Enter student grade:")
-    }
-    students.append(new_student)
-    save_students(students)
+    try:
+        id=int(input("شماره دانش آموز:").strip())
+        name=input("نام دانش آموز:").strip()
+        age=int(input("سن دانش آموز:").strip())
+        grade=int(input("نمره دانش آموز:").strip())
+
+        if not id or not name or not age or not grade:
+            raise ValueError("تمام فیلد ها باید پر شود")
+        new_student={
+            "ID":id,
+            "Name":name,
+            "Age":age,
+            "Grade":grade
+        }
+        students.append(new_student)
+        save_students(students)
+    except ValueError:
+        print("خطای ورودی")
+    except Exception as e:
+        print("خطا")
 def remove_student():
     students=load_students()
     target_id=input("شماره دانش آموز :")
