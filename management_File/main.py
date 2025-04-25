@@ -2,6 +2,8 @@ import json
 import os
 from customers.customer import Customer
 
+Data_path="data\customers.json"
+
 def main():
     while True:
         print("\n سیستم مدیریت مشتری و فاکتور :")
