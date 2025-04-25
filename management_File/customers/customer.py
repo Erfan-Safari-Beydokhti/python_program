@@ -12,4 +12,12 @@ class Customer:
             'phone': self.phone,
             'email': self.email
         }
-   
+
+
+    def from_dict(data):
+        return Customer(
+            data["id"],
+            data["name"],
+            data["phone"],
+            data["email"]
+        )
