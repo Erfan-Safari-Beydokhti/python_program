@@ -49,9 +49,9 @@ def main():
 
         choice = input("Choose an option: ").strip()
         if choice == "1":
-            pass
+            add_customer()
         elif choice=="2":
-            pass
+            list_customers()
         elif choice=="3":
             pass
         elif choice=="4":
