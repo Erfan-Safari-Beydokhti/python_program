@@ -2,6 +2,7 @@ import json
 import os
 from customers.customer import Customer
 import uuid
+from invoices.invoice import Invoice
 Data_path="data\customers.json"
 def load_customers():
     if not os.path.exists(Data_path):
@@ -38,6 +39,32 @@ def list_customers():
     for c in customers:
         print(f"id:{c.id} , name:{c.name} , phone:{c.phone} , email:{c.email}")
     print()
+
+def create_invoice():
+    print("صدور فاکتور جدید")
+    customer_id=input("شماره کاربری مشتری:").strip()
+    customers=load_customers()
+    if not any(c.id == int(customer_id)for c in customers):
+        print("مشتری با این شماره کاربری پیدا نشد")
+        return
+    items=[]
+    while True:
+        name=input("نام محصول : ( پایان )برای خروج").strip()
+        if name =="پایان":
+            print("پایان صدور فاکتور")
+            break
+        try:
+            price=float(input("قیمت محصول را وارد کنید:"))
+            quantity=int(input("تعداد محصول:"))
+            items.append({"name":name,"price":price,"quantity":quantity})
+        except ValueError:
+            print("ورودی نامعتبر")
+    invoice_id=str(uuid.uuid4())[:8]
+    invoice=Invoice(invoice_id,int(customer_id),items)
+    Invoice_path=f"data/invoices/invoice_{customer_id}.json"
+    with open(Invoice_path, "w") as file:
+        json.dump(invoice.to_dict(),file,indent=4)
+    print(f"ثبت شد{invoice_id}فاکتور با شناسه ")
 def main():
     while True:
         print("\n سیستم مدیریت مشتری و فاکتور :")
