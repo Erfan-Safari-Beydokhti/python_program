@@ -17,7 +17,7 @@ A simple command-line application in Python for managing student records. It all
 
 🗂️ Project Structure
 
-<pre> student_system/ ├── core/ │ ├── __init__.py │ └── file_handler.py │ ├── data/ │ └── students.csv │ ├── main/ │ └── main.py │ └── README.md </pre>
+<pre> ``` student_system/ ├── core/ │ ├── __init__.py │ └── file_handler.py │ ├── data/ │ └── students.csv │ ├── main/ │ └── main.py │ └── README.md ``` </pre>
 
 
 
