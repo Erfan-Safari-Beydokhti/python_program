@@ -16,6 +16,18 @@ def save_customers(customers):
 
     with open(Data_path, "w") as file:
         json.dump([c.to_dict() for c in customers], file,indent=4)
+def add_customer():
+    customers = load_customers()
+    print("\n افزدون مشتری جدید ")
+    id=len(customers)+1
+    name=input("نام مشتری:").strip()
+    phone=input("شماره تلفن مشتری:").strip()
+    email=input("ایمیل مشتری:").strip()
+    new_customer=Customer(id,name,phone,email)
+    customers.append(new_customer)
+
+    save_customers(customers)
+    print("مشتری با موفقیت اضافه شد ")
 
 
 
