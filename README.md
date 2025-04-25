@@ -1,29 +1,32 @@
-🐍 Python Projects Collection
+🧾 Customer & Invoice Management System
+A simple command-line Python project to manage customers and invoices. It allows users to add customers, create invoices, and view saved records. Data is stored in JSON format with a clean and modular code structure.
 
-This repository is a collection of Python-based projects for practice, learning, and real-world use.
+📦 Features
+Add new customers (ID, Name, Email, Phone)
 
-Each branch contains a separate, well-structured project focused on different areas of Python programming, such as file handling, data processing, automation, and more.
+Create invoices with multiple items (name, price, quantity)
 
----
+Save each invoice to a separate JSON file
 
-📂 Available Projects
+View all invoices and customers
 
-| Branch | Project Name            | Description |
-|--------|-------------------------|-------------|
-| `main`           | This branch (project hub) | Overview of all Python projects in this repo. |
-| `student_system` | Student Management System | Add, view, and remove student records stored in a CSV file, built with a modular structure. |
-| `Fast-food-order-manager` | Fast Food CLI Order Manager | It supports user login/registration, viewing the menu, managing a basket, saving orders, and reviewing order history — all through a simple text-based interface |
+Error handling for file operations
 
+Modular and maintainable project structure
 
----
+🗂️ Project Structure
 
-🛠️ How to Use
-
-1. Clone the repo:
-```bash
-git clone https://github.com/Erfan-Safari-Beydokhti/python_program.git
-cd python_program
-git checkout ...
-
-
-
+<pre> ```
+invoice_manager/ 
+├── customers/ 
+│ └── customer.py # Logic for customer data (class/functions) 
+│ 
+├── invoices/ 
+│ └── invoice.py # Logic for invoice creation and data handling 
+│ 
+├── data/ 
+│ ├── customers.json # All customer records stored here 
+│ └── invoices/ # Each invoice saved as a separate JSON file 
+│ 
+├── main.py # Entry point to run the app 
+└── README.md # Project description and documentation ``` </pre>
