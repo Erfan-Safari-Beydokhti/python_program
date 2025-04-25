@@ -5,4 +5,6 @@ class Invoice:
         self.costumer_id = costumer_id
         self.Items = Items
         self.date = date or datetime.datetime.now().strftime('%Y-%m-%d')
+    def total_price(self):
+        return sum(item["price"] * item["count"] for item in self.Items)
     
