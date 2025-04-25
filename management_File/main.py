@@ -3,7 +3,15 @@ import os
 from customers.customer import Customer
 
 Data_path="data\customers.json"
-
+def load_customers():
+    if not os.path.exists(Data_path):
+        return []
+    with open(Data_path, "r") as f:
+        try:
+            data=json.load(f)
+            return [Customer.from_dict(c) for c in data]
+        except json.JSONDecodeError:
+            return[]
 def main():
     while True:
         print("\n سیستم مدیریت مشتری و فاکتور :")
