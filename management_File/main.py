@@ -12,6 +12,13 @@ def load_customers():
             return [Customer.from_dict(c) for c in data]
         except json.JSONDecodeError:
             return[]
+def save_customers(customers):
+
+    with open(Data_path, "w") as file:
+        json.dump([c.to_dict() for c in customers], file,indent=4)
+
+
+
 def main():
     while True:
         print("\n سیستم مدیریت مشتری و فاکتور :")
