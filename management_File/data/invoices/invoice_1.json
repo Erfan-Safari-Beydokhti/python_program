@@ -1,0 +1,13 @@
+{
+    "invoice_id": "43e9a88d",
+    "customer_id": "1",
+    "items": [
+        {
+            "name": "melon",
+            "price": 27000.0,
+            "quantity": 1
+        }
+    ],
+    "date": "2025-04-25",
+    "total_price": 27000.0
+}
