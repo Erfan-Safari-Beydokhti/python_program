@@ -1,3 +1,7 @@
+import json
+import os
+from customers.customer import Customer
+
 def main():
     while True:
         print("\n سیستم مدیریت مشتری و فاکتور :")
