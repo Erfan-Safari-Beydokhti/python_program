@@ -1,7 +1,7 @@
 import json
 import os
 from customers.customer import Customer
-
+import uuid
 Data_path="data\customers.json"
 def load_customers():
     if not os.path.exists(Data_path):
