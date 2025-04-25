@@ -29,8 +29,15 @@ def add_customer():
     save_customers(customers)
     print("مشتری با موفقیت اضافه شد ")
 
-
-
+def list_customers():
+    customers = load_customers()
+    if not customers:
+        print("لیستی از مشتری ها وجود ندارد")
+        return
+    print("لیست مشتری ها ")
+    for c in customers:
+        print(f"id:{c.id} , name:{c.name} , phone:{c.phone} , email:{c.email}")
+    print()
 def main():
     while True:
         print("\n سیستم مدیریت مشتری و فاکتور :")
