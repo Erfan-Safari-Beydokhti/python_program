@@ -15,3 +15,10 @@ class Invoice:
             "date": self.date
             "total_price": self.total_price()
         }
+    def from_dict(data):
+        return Invoice(
+            data["invoice_id"],
+            data["customer_id"],
+            data["Items"],
+            data.get("date")
+        )
